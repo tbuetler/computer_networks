@@ -7,7 +7,7 @@ Some helper programs
 
 Example output
 
-```bash
+```commandline
  ~/Documents/programs/computer_networks ❯ python3 converter
 🔢 Gib eine Zahl oder IPv4-Adresse ein: 1040336008
 
@@ -28,7 +28,7 @@ Erste Hostadresse:      62.2.68.1
 Letzte Hostadresse:     62.2.68.254
 CIDR-Notation:          62.2.68.136/24
 ```
-```bash
+```commandline
  ~/Doc/programs/computer_networks ❯ python3 converter
 🔢 Gib eine Zahl oder IPv4-Adresse ein: 0x3E024488
 
@@ -49,7 +49,7 @@ Erste Hostadresse:      62.2.68.1
 Letzte Hostadresse:     62.2.68.254
 CIDR-Notation:          62.2.68.136/24
 ```
-```bash
+```commandline
  ~/Doc/programs/computer_networks ❯ python3 converter
 🔢 Gib eine Zahl oder IPv4-Adresse ein: 0b00111110000000100100010010001000
 
@@ -70,7 +70,7 @@ Erste Hostadresse:      62.2.68.1
 Letzte Hostadresse:     62.2.68.254
 CIDR-Notation:          62.2.68.136/24
 ```
-```bash
+```commandline
  ~/Doc/programs/computer_networks ❯ python3 converter
 🔢 Gib eine Zahl oder IPv4-Adresse ein: 193.5.80.10
 
@@ -97,82 +97,10 @@ CIDR-Notation:          193.5.80.10/24
 
 example output
 
-```bash
- ~/Doc/p/computer_networks master +3 ❯ python3 subnet_converter
+```commandline
+ ~/Documents/programs/computer_networks master +3 ❯ python3 subnet_converter
 Gib die IPv4-Adresse mit Präfix (z.B. 193.5.86.0/24) ein: 193.5.86.0/24
-Gib die benötigten Hosts als Liste an (z.B. 4,12,17,67): 4
-
-📊 Netzwerkinformationen:
-🌍 Netzwerkadresse: 193.5.86.0/24
-📏 Verfügbare IPs: 256
-
-📊 Berechnete Subnetze:
-
-🔹 **Subnetz 1:**
-   🌐 Netzwerk-Adresse: 193.5.86.0
-   📏 Netmask: 255.255.255.248
-   🔢 CIDR-Notation: /29
-   💻 Benötigte Hosts: 4
-   🏠 Erster Host: 193.5.86.1
-   🏠 Letzter Host: 193.5.86.6
-   📢 Broadcast-Adresse: 193.5.86.7
-
-📊 **Zusätzliche Subnetze möglich**
-   🏗️ Verbleibende IPs: 248
-   🏠 Anzahl zusätzlicher /30-Subnetze: 62
-```
-```bash
- ~/Doc/p/computer_networks master +3 ❯ python3 subnet_converter
-Gib die IPv4-Adresse mit Präfix (z.B. 193.5.86.0/24) ein: 193.5.86.0/24
-Gib die benötigten Hosts als Liste an (z.B. 4,12,17,67): 12
-
-📊 Netzwerkinformationen:
-🌍 Netzwerkadresse: 193.5.86.0/24
-📏 Verfügbare IPs: 256
-
-📊 Berechnete Subnetze:
-
-🔹 **Subnetz 1:**
-   🌐 Netzwerk-Adresse: 193.5.86.0
-   📏 Netmask: 255.255.255.240
-   🔢 CIDR-Notation: /28
-   💻 Benötigte Hosts: 12
-   🏠 Erster Host: 193.5.86.1
-   🏠 Letzter Host: 193.5.86.14
-   📢 Broadcast-Adresse: 193.5.86.15
-
-📊 **Zusätzliche Subnetze möglich**
-   🏗️ Verbleibende IPs: 240
-   🏠 Anzahl zusätzlicher /30-Subnetze: 60
-```
-```bash
- ~/Doc/p/computer_networks master +3 ❯ python3 subnet_converter
-Gib die IPv4-Adresse mit Präfix (z.B. 193.5.86.0/24) ein: 193.5.86.0/24
-Gib die benötigten Hosts als Liste an (z.B. 4,12,17,67): 17
-
-📊 Netzwerkinformationen:
-🌍 Netzwerkadresse: 193.5.86.0/24
-📏 Verfügbare IPs: 256
-
-📊 Berechnete Subnetze:
-
-🔹 **Subnetz 1:**
-   🌐 Netzwerk-Adresse: 193.5.86.0
-   📏 Netmask: 255.255.255.224
-   🔢 CIDR-Notation: /27
-   💻 Benötigte Hosts: 17
-   🏠 Erster Host: 193.5.86.1
-   🏠 Letzter Host: 193.5.86.30
-   📢 Broadcast-Adresse: 193.5.86.31
-
-📊 **Zusätzliche Subnetze möglich**
-   🏗️ Verbleibende IPs: 224
-   🏠 Anzahl zusätzlicher /30-Subnetze: 56
-```
-```bash
- ~/Doc/p/computer_networks master +3 ❯ python3 subnet_converter
-Gib die IPv4-Adresse mit Präfix (z.B. 193.5.86.0/24) ein: 193.5.86.0/24
-Gib die benötigten Hosts als Liste an (z.B. 4,12,17,67): 67
+Gib die benötigten Hosts als Liste an (z.B. 4,12,17,67): 4,12,17,67
 
 📊 Netzwerkinformationen:
 🌍 Netzwerkadresse: 193.5.86.0/24
@@ -189,7 +117,34 @@ Gib die benötigten Hosts als Liste an (z.B. 4,12,17,67): 67
    🏠 Letzter Host: 193.5.86.126
    📢 Broadcast-Adresse: 193.5.86.127
 
+🔹 **Subnetz 2:**
+   🌐 Netzwerk-Adresse: 193.5.86.128
+   📏 Netmask: 255.255.255.224
+   🔢 CIDR-Notation: /27
+   💻 Benötigte Hosts: 17
+   🏠 Erster Host: 193.5.86.129
+   🏠 Letzter Host: 193.5.86.158
+   📢 Broadcast-Adresse: 193.5.86.159
+
+🔹 **Subnetz 3:**
+   🌐 Netzwerk-Adresse: 193.5.86.160
+   📏 Netmask: 255.255.255.240
+   🔢 CIDR-Notation: /28
+   💻 Benötigte Hosts: 12
+   🏠 Erster Host: 193.5.86.161
+   🏠 Letzter Host: 193.5.86.174
+   📢 Broadcast-Adresse: 193.5.86.175
+
+🔹 **Subnetz 4:**
+   🌐 Netzwerk-Adresse: 193.5.86.176
+   📏 Netmask: 255.255.255.248
+   🔢 CIDR-Notation: /29
+   💻 Benötigte Hosts: 4
+   🏠 Erster Host: 193.5.86.177
+   🏠 Letzter Host: 193.5.86.182
+   📢 Broadcast-Adresse: 193.5.86.183
+
 📊 **Zusätzliche Subnetze möglich**
-   🏗️ Verbleibende IPs: 128
-   🏠 Anzahl zusätzlicher /30-Subnetze: 32
+   🏗️ Verbleibende IPs: 72
+   🏠 Anzahl zusätzlicher /30-Subnetze: 18
 ```

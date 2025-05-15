@@ -19,8 +19,8 @@ def subnetting(netzwerk, host_list):
 
     for hosts in host_list:
         cidr = benötigte_cidr(hosts)
-        if cidr is None:
-            print(f"❌ Fehler: {hosts} Hosts passen nicht ins Netzwerk.")
+        if cidr is None or remaining_ips < 2 ** (32 - cidr):
+            print(f"❌ Fehler: {hosts} Hosts passen nicht ins verfügbare Netzwerk.")
             continue
         
         subnet = ipaddress.ip_network(f"{start_ip}/{cidr}", strict=False)
@@ -42,6 +42,13 @@ def mögliche_subnetze(remaining_ips):
         return 0
     return remaining_ips // 4  # /30 hat immer 4 IPs
 
+def validate_host_list(host_list, total_ips):
+    """ Prüft, ob die angeforderte Menge an Hosts überhaupt ins Netzwerk passt """
+    benötigte_ips = sum((2 ** (32 - benötigte_cidr(hosts)) for hosts in host_list if benötigte_cidr(hosts)))
+    if benötigte_ips > total_ips:
+        return False, benötigte_ips
+    return True, benötigte_ips
+
 def main():
     netzwerk = input("Gib die IPv4-Adresse mit Präfix (z.B. 193.5.86.0/24) ein: ").strip()
     hosts_input = input("Gib die benötigten Hosts als Liste an (z.B. 4,12,17,67): ").strip()
@@ -61,13 +68,22 @@ def main():
     print("\n📊 Netzwerkinformationen:")
     print(f"🌍 Netzwerkadresse: {netzwerk}")
     print(f"📏 Verfügbare IPs: {ip_net.num_addresses}")
+    
+    # Prüfe ob alle Hostanforderungen ins Netzwerk passen
+    valid, benötigte_ips = validate_host_list(host_liste, ip_net.num_addresses)
+    if not valid:
+        print(f"❌ Fehler: Die benötigten Subnetze erfordern {benötigte_ips} IP-Adressen, "
+              f"aber das Netzwerk hat nur {ip_net.num_addresses}.")
+        return
 
+    # Berechnung der Subnetze
     subnets, remaining_ips = subnetting(netzwerk, host_liste)
 
     if not subnets:
         print("❌ Fehler: Keine passenden Subnetze gefunden.")
         return
 
+    # Ausgabe der berechneten Subnetze
     print("\n📊 Berechnete Subnetze:")
     for i, (subnet, hosts) in enumerate(subnets, start=1):
         print(f"\n🔹 **Subnetz {i}:**")
